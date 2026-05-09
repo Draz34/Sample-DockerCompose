@@ -1,0 +1,28 @@
+services:
+  app:
+    build: .
+    container_name: taskboard-app
+    env_file: .env
+    depends_on:
+      - db
+    ports:
+      - "8080:3000"   # HOST 8080 → container 3000. JAMAIS 80:* en host.
+    volumes:
+      - ./logs:/app/logs           # bind relatif → persisté auto par BeeBoop
+      - ./uploads:/app/uploads     # bind relatif → persisté auto par BeeBoop
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    container_name: taskboard-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-taskboard}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - db_data:/var/lib/postgresql/data    # named volume → persisté via /var/lib/docker/volumes
+      - ./db:/docker-entrypoint-initdb.d:ro
+    restart: unless-stopped
+
+volumes:
+  db_data:
