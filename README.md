@@ -2,7 +2,7 @@
 
 ## Quoi
 
-TaskBoard, mini-Trello 3 colonnes (À faire / En cours / Terminé) en **Node.js 20 + Express + Postgres 16** pour démo BeeBoop Compute (GitHub Import + DB Time Machine). Pas de framework frontend, vanilla JS, requêtes SQL brutes via `pg`. Données réelles, scénario PITR évident.
+TaskBoard, mini-Trello 3 colonnes (À faire / En cours / Terminé) en **Node.js 20 + Express + Postgres 16** pour démo BeeBoop Compute (GitHub Import + DB Time Machine). Pas de framework frontend, vanilla JS, requêtes SQL brutes via `pg`. Données réelles, scénario PITR évident..
 
 ## Local
 
